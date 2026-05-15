@@ -1,4 +1,4 @@
-import config from '../config.json';
+import config from '../config';
 import mysql from 'mysql2/promise';
 import { Sequelize } from 'sequelize';
 import accountModel from '../accounts/account.model';
@@ -16,11 +16,11 @@ async function initialize() {
             return;
         }
 
-        const host = process.env.MYSQL_HOST || config.database.host;
-        const port = Number(process.env.MYSQL_PORT) || config.database.port;
-        const user = process.env.MYSQL_USER || config.database.user;
-        const password = process.env.MYSQL_PASSWORD || config.database.password;
-        const database = process.env.MYSQL_DATABASE || config.database.database;
+        const host = config.dbHost;
+        const port = config.dbPort;
+        const user = config.dbUser;
+        const password = config.dbPass;
+        const database = config.dbName;
 
         // Skip manual DB creation on Vercel/Clever Cloud as it is already created
         if (!process.env.VERCEL) {
