@@ -42,3 +42,6 @@ tmp/
 # IDE specific files
 .vscode/settings.json
 .vs/
+
+# Files Backend-config.json
+config.json
